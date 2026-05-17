@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>第七工具箱 | Toolbox7 - 免费在线工具</title>
+    <!-- Google Fonts & Font Awesome (免费商用) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            line-height: 1.5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .top-ad {
+            background: #fff;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            padding: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .ad-placeholder {
+            background: #f1f5f9;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #64748b;
+            min-height: 90px;
+            width: 100%;
+        }
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 25px;
+        }
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #eef2ff;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+        }
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #1e293b;
+        }
+        .card h2 i {
+            color: #3b82f6;
+            font-size: 1.4rem;
+        }
+        .card p.desc {
+            color: #475569;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            border-left: 3px solid #3b82f6;
+            padding-left: 12px;
+        }
+        input, textarea, button, select {
+            font-family: inherit;
+            font-size: 0.95rem;
+            border-radius: 14px;
+            border: 1px solid #cbd5e1;
+            padding: 10px 14px;
+            width: 100%;
+            margin-top: 8px;
+            transition: 0.2s;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: auto;
+            padding: 10px 18px;
+            margin-top: 12px;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+        .result-area {
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 14px;
+            margin-top: 12px;
+            font-size: 0.9rem;
+            word-break: break-all;
+            color: #0f172a;
+        }
+        .inline-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .sidebar {
+            position: sticky;
+            top: 20px;
+            align-self: start;
+        }
+        .sidebar-ad {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #eef2ff;
+            margin-bottom: 25px;
+        }
+        .sidebar-ad .ad-placeholder {
+            min-height: 250px;
+            flex-direction: column;
+        }
+        .info-box {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            border: 1px solid #eef2ff;
+        }
+        .info-box h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 30px;
+            font-size: 0.85rem;
+            color: #475569;
+        }
+        footer a {
+            color: #3b82f6;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        @media (max-width: 800px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: static;
+                margin-top: 20px;
+            }
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .base64-row {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .base64-item {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 12px;
+        }
+        .resource-link {
+            margin-bottom: 0.75rem;
+        }
+        .resource-link a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .resource-link a:hover {
+            text-decoration: underline;
+        }
+        .resource-desc {
+            font-size: 0.85rem;
+            color: #475569;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 顶部广告位 -->
+    <div class="top-ad">
+        <div class="ad-placeholder">
+            <i class="fas fa-ad" style="margin-right: 8px;"></i> 广告预留位 - 将 Google AdSense 代码替换此处
+        </div>
+    </div>
+
+    <div class="main-grid">
+        <!-- 左侧工具区 -->
+        <div>
+            <h1 style="font-size: 1.8rem; margin-bottom: 0.5rem;">🛠️ 第七工具箱 | Toolbox7 - 免费在线工具</h1>
+            <p style="color: #475569; margin-bottom: 30px;">免费、轻量、无需登录 · 每天都会用到的实用小工具</p>
+            <div class="tools-grid">
+                <!-- 工具1: 随机密码生成器 -->
+                <div class="card">
+                    <h2><i class="fas fa-key"></i> 随机密码生成器</h2>
+                    <p class="desc">生成高强度随机密码，可自定义长度</p>
+                    <div class="inline-group">
+                        <label style="flex:1">密码长度:
+                            <input type="number" id="pwdLength" value="12" min="6" max="32">
+                        </label>
+                        <button id="genPwdBtn"><i class="fas fa-sync-alt"></i> 生成密码</button>
+                    </div>
+                    <div class="result-area" id="passwordResult">点击生成</div>
+                </div>
+
+                <!-- 工具2: 字数统计 -->
+                <div class="card">
+                    <h2><i class="fas fa-chart-simple"></i> 字数统计工具</h2>
+                    <p class="desc">实时统计字符数、单词数、句子数</p>
+                    <textarea id="textInput" rows="4" placeholder="在这里输入或粘贴文本..."></textarea>
+                    <div class="result-area" id="wordStats">字符: 0 | 单词: 0 | 句子: 0</div>
+                </div>
+
+                <!-- 工具3: 时间戳转换器 -->
+                <div class="card">
+                    <h2><i class="fas fa-clock"></i> 时间戳转换器</h2>
+                    <p class="desc">Unix时间戳 ↔ 可读日期时间</p>
+                    <div style="margin-bottom: 12px;">
+                        <label>时间戳 (秒):</label>
+                        <input type="number" id="timestampInput" placeholder="例如 1716192000">
+                        <button id="tsToDateBtn">→ 转为日期</button>
+                    </div>
+                    <div>
+                        <label>日期时间:</label>
+                        <input type="datetime-local" id="datetimeInput">
+                        <button id="dateToTsBtn">→ 转为时间戳</button>
+                    </div>
+                    <div class="result-area" id="timestampResult">等待转换</div>
+                </div>
+
+                <!-- 工具4: 颜色选择器 -->
+                <div class="card">
+                    <h2><i class="fas fa-palette"></i> 颜色选择器</h2>
+                    <p class="desc">拾取颜色，获取HEX/RGB值</p>
+                    <input type="color" id="colorPicker" value="#3b82f6">
+                    <div class="result-area" id="colorResult" style="background: #3b82f6; color: white;">HEX: #3b82f6</div>
+                </div>
+
+                <!-- 工具5: UUID生成器 -->
+                <div class="card">
+                    <h2><i class="fas fa-fingerprint"></i> UUID生成器</h2>
+                    <p class="desc">生成随机UUID v4标识符，用于开发或测试</p>
+                    <button id="genUuidBtn"><i class="fas fa-dice-d6"></i> 生成新UUID</button>
+                    <div class="result-area" id="uuidResult">点击生成</div>
+                </div>
+
+                <!-- 工具6: Base64编解码器 -->
+                <div class="card">
+                    <h2><i class="fas fa-code"></i> Base64编解码器</h2>
+                    <p class="desc">文本与Base64互转，支持中文</p>
+                    <div class="base64-row">
+                        <div class="base64-item">
+                            <label>原文：</label>
+                            <textarea id="base64Input" rows="2" placeholder="请输入要编码的文本..."></textarea>
+                            <button id="encodeBase64Btn">编码为Base64</button>
+                        </div>
+                        <div class="base64-item">
+                            <label>Base64字符串：</label>
+                            <textarea id="base64Output" rows="2" placeholder="编码结果或待解码的内容..."></textarea>
+                            <button id="decodeBase64Btn">解码为原文</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 资源推荐板块（横跨整行） -->
+                <div style="grid-column: 1 / -1; margin-top: 0.5rem;">
+                    <h2 style="font-size: 1.5rem; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-gem" style="color: #3b82f6;"></i> 📦 实用资源精选
+                    </h2>
+                    <p style="color: #475569; margin-bottom: 1rem;">发现好工具 · 探索新世界</p>
+                    <div class="tools-grid">
+                        <!-- 游戏类 -->
+                        <div class="card">
+                            <h2><i class="fas fa-gamepad"></i> 🎮 游戏乐园</h2>
+                            <div class="resource-link">
+                                <a href="https://itch.io" target="_blank" rel="noopener noreferrer">itch.io</a>
+                                <div class="resource-desc">独立游戏的天堂，海量佳作免费或“按需付费”。</div>
+                            </div>
+                            <div class="resource-link">
+                                <a href="https://www.freeonlinegame.games" target="_blank" rel="noopener noreferrer">FreeOnlineGame.games</a>
+                                <div class="resource-desc">无需下载，打开网页就能玩的最新网页小游戏。</div>
+                            </div>
+                        </div>
+                        <!-- AI 工具类 -->
+                        <div class="card">
+                            <h2><i class="fas fa-robot"></i> 🤖 AI 工具站</h2>
+                            <div class="resource-link">
+                                <a href="https://chat.deepseek.com" target="_blank" rel="noopener noreferrer">DeepSeek (Chat)</a>
+                                <div class="resource-desc">编程和通用AI辅助神器，国内可直接访问，完全免费。</div>
+                            </div>
+                            <div class="resource-link">
+                                <a href="https://gamma.app" target="_blank" rel="noopener noreferrer">Gamma (AI PPT)</a>
+                                <div class="resource-desc">输入想法即可生成演示文稿，免费版足矣。</div>
+                            </div>
+                            <div class="resource-link">
+                                <a href="https://spider.ai" target="_blank" rel="noopener noreferrer">SpiderAI (聊天聚合)</a>
+                                <div class="resource-desc">整合了ChatGPT、Claude等主流AI模型。</div>
+                            </div>
+                        </div>
+                        <!-- 免费影音类 -->
+                        <div class="card">
+                            <h2><i class="fas fa-video"></i> 🎬 免费影音</h2>
+                            <div class="resource-link">
+                                <a href="https://www.xklx1.com" target="_blank" rel="noopener noreferrer">星空落资源网</a>
+                                <div class="resource-desc">找资料、考研素材、设计模板，资源分类清晰。</div>
+                            </div>
+                            <div class="resource-link">
+                                <a href="https://fmhy.net" target="_blank" rel="noopener noreferrer">FMHY (全站集合)</a>
+                                <div class="resource-desc">全球最大免费资源集合网站，一张巨大的“资源地图”。</div>
+                            </div>
+                            <div class="resource-link">
+                                <a href="https://tinywow.com" target="_blank" rel="noopener noreferrer">TinyWow</a>
+                                <div class="resource-desc">无需注册、无广告的200多种免费在线工具。</div>
+                            </div>
+                        </div>
+                        <!-- 软件与工具类 -->
+                        <div class="card">
+                            <h2><i class="fas fa-code"></i> 💻 软件与工具</h2>
+                            <div class="resource-link">
+                                <a href="https://www.openshot.org" target="_blank" rel="noopener noreferrer">OpenShot</a>
+                                <div class="resource-desc">完全免费开源，跨平台视频剪辑软件，适合新手入门。</div>
+                            </div>
+                            <div class="resource-link">
+                                <a href="https://www.qi9v.com" target="_blank" rel="noopener noreferrer">蛋蛋软件库</a>
+                                <div class="resource-desc">“永久免费”的手机软件库，下载速度快。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧边栏：广告+信息 -->
+        <div class="sidebar">
+            <div class="sidebar-ad">
+                <div class="ad-placeholder" style="min-height: 250px; flex-direction: column;">
+                    <i class="fas fa-ad"></i><br> 广告预留位
+                </div>
+            </div>
+            <div class="info-box">
+                <h3><i class="fas fa-info-circle"></i> 关于第七工具箱</h3>
+                <p style="font-size: 0.9rem;">本站所有工具均在浏览器本地运行，内置链接均为各资源的官方网站。我们不做任何内容存储，仅作为导航，不承担链接网站的责任。如涉侵权，请通过联系方式告知。</p>
+                <hr style="margin: 15px 0; border-color: #eef2ff;">
+                <p style="font-size: 0.8rem; color:#334155;">✨ 小贴士：UUID符合RFC4122标准；Base64支持中文和特殊符号。</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 第七工具箱 (Toolbox7) | 
+        <a href="#" id="privacyLink">隐私政策</a> | 
+        <a href="#" id="aboutLink">关于我们</a> | 
+        <a href="mailto:admin@example.com">联系我们</a> |
+        <a href="mailto:admin@example.com">侵权联系: admin@example.com</a>
+        <br><small>本网站使用 Cookie 优化广告展示，继续浏览表示同意。</small>
+    </footer>
+</div>
+
+<script>
+    // 随机密码生成器
+    function generatePassword(length) {
+        const upper = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+        const lower = 'abcdefghijkmnopqrstuvwxyz';
+        const numbers = '23456789';
+        const symbols = '!@#$%^&*()_+[]{}';
+        let all = upper + lower + numbers + symbols;
+        let password = '';
+        password += upper[Math.floor(Math.random() * upper.length)];
+        password += lower[Math.floor(Math.random() * lower.length)];
+        password += numbers[Math.floor(Math.random() * numbers.length)];
+        password += symbols[Math.floor(Math.random() * symbols.length)];
+        for(let i = password.length; i < length; i++) {
+            password += all[Math.floor(Math.random() * all.length)];
+        }
+        return password.split('').sort(() => 0.5 - Math.random()).join('');
+    }
+    document.getElementById('genPwdBtn').addEventListener('click', () => {
+        let len = parseInt(document.getElementById('pwdLength').value);
+        if(isNaN(len)) len = 12;
+        len = Math.min(32, Math.max(6, len));
+        document.getElementById('passwordResult').innerText = generatePassword(len);
+    });
+
+    // 字数统计
+    const textarea = document.getElementById('textInput');
+    const wordStats = document.getElementById('wordStats');
+    function updateStats() {
+        let text = textarea.value;
+        let charCount = text.length;
+        let words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+        let sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+        wordStats.innerText = `字符: ${charCount} | 单词: ${words} | 句子: ${sentences}`;
+    }
+    textarea.addEventListener('input', updateStats);
+    updateStats();
+
+    // 时间戳转换
+    const tsInput = document.getElementById('timestampInput');
+    const datetimeInput = document.getElementById('datetimeInput');
+    const tsResult = document.getElementById('timestampResult');
+    function setDefaultDateTime() {
+        let now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        datetimeInput.value = now.toISOString().slice(0, 16);
+    }
+    setDefaultDateTime();
+    document.getElementById('tsToDateBtn').addEventListener('click', () => {
+        let ts = parseInt(tsInput.value);
+        if(isNaN(ts)) {
+            tsResult.innerText = '❌ 请输入有效时间戳(秒)';
+            return;
+        }
+        let date = new Date(ts * 1000);
+        if(isNaN(date.getTime())) {
+            tsResult.innerText = '❌ 无效的时间戳';
+            return;
+        }
+        tsResult.innerText = date.toLocaleString('zh-CN');
+    });
+    document.getElementById('dateToTsBtn').addEventListener('click', () => {
+        let dateStr = datetimeInput.value;
+        if(!dateStr) {
+            tsResult.innerText = '❌ 请选择日期时间';
+            return;
+        }
+        let date = new Date(dateStr);
+        let ts = Math.floor(date.getTime() / 1000);
+        if(isNaN(ts)) tsResult.innerText = '❌ 转换失败';
+        else tsResult.innerText = `Unix时间戳: ${ts}`;
+    });
+
+    // 颜色选择器
+    const colorPicker = document.getElementById('colorPicker');
+    const colorResult = document.getElementById('colorResult');
+    function updateColor() {
+        let hex = colorPicker.value;
+        let r = parseInt(hex.slice(1,3), 16);
+        let g = parseInt(hex.slice(3,5), 16);
+        let b = parseInt(hex.slice(5,7), 16);
+        colorResult.innerText = `HEX: ${hex}  |  RGB: ${r}, ${g}, ${b}`;
+        colorResult.style.backgroundColor = hex;
+        let brightness = (r*0.299 + g*0.587 + b*0.114);
+        colorResult.style.color = brightness > 140 ? '#000' : '#fff';
+    }
+    colorPicker.addEventListener('input', updateColor);
+    updateColor();
+
+    // UUID生成器
+    function generateUUID() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            const r = Math.random() * 16 | 0;
+            const v = c === 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+    document.getElementById('genUuidBtn').addEventListener('click', () => {
+        document.getElementById('uuidResult').innerText = generateUUID();
+    });
+
+    // Base64编解码器（支持中文）
+    function utf8ToBase64(str) {
+        return btoa(unescape(encodeURIComponent(str)));
+    }
+    function base64ToUtf8(base64) {
+        try {
+            return decodeURIComponent(escape(atob(base64)));
+        } catch(e) {
+            return "❌ 解码失败，请检查Base64字符串是否正确";
+        }
+    }
+    const base64Input = document.getElementById('base64Input');
+    const base64Output = document.getElementById('base64Output');
+    document.getElementById('encodeBase64Btn').addEventListener('click', () => {
+        let text = base64Input.value;
+        if(text === "") {
+            base64Output.value = "❌ 请输入要编码的文本";
+            return;
+        }
+        try {
+            base64Output.value = utf8ToBase64(text);
+        } catch(e) {
+            base64Output.value = "❌ 编码出错，请检查文本";
+        }
+    });
+    document.getElementById('decodeBase64Btn').addEventListener('click', () => {
+        let b64 = base64Output.value.trim();
+        if(b64 === "") {
+            base64Input.value = "❌ 请输入Base64字符串";
+            return;
+        }
+        let decoded = base64ToUtf8(b64);
+        base64Input.value = decoded;
+    });
+
+    // 页脚链接占位提醒
+    document.getElementById('privacyLink').addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('请创建 privacy.html 页面并修改链接地址。\n模板：声明所有工具本地运行，使用Cookie用于广告，链接均为第三方网站。');
+    });
+    document.getElementById('aboutLink').addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('关于页面建设中。可创建 about.html 介绍第七工具箱的使命和开发计划。');
+    });
+</script>
+</body>
+</html>
