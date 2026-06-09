@@ -3,71 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>第七工具箱 | Toolbox7 - 免费在线工具</title>
-    <!-- Google Fonts & Font Awesome (免费商用) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <title>第七工具箱 | Toolbox7 - 免费在线工具 · 程序员必备</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --border: #e2e8f0;
+            --border-light: #eef2ff;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 25px 40px -16px rgba(0, 0, 0, 0.14);
+            --radius: 18px;
+            --radius-lg: 22px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         body {
-            font-family: 'Inter', sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
-            line-height: 1.5;
-            padding: 20px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f1f5f9;
+            background-image: radial-gradient(ellipse at 20% 10%, #eef2ff 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 90%, #f0f9ff 0%, transparent 55%);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 16px;
         }
         .container {
-            max-width: 1400px;
+            max-width: 1440px;
             margin: 0 auto;
         }
         .top-ad {
-            background: #fff;
-            border-radius: 20px;
-            margin-bottom: 30px;
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            margin-bottom: 24px;
             text-align: center;
-            padding: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            box-shadow: var(--shadow-sm);
+            border: 1px dashed #cbd5e1;
         }
         .ad-placeholder {
-            background: #f1f5f9;
+            background: #f8fafc;
             border-radius: 12px;
-            display: inline-flex;
+            min-height: 80px;
+            width: 100%;
+            display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
-            color: #64748b;
-            min-height: 90px;
-            width: 100%;
+            gap: 8px;
+            font-size: 13px;
+            color: #94a3b8;
+            border: 1px dashed #e2e8f0;
+        }
+        .header-area {
+            margin-bottom: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .header-area h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #1e293b;
+        }
+        .header-area h1 .logo-icon {
+            background: var(--primary);
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .subtitle .badge {
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
         }
         .main-grid {
             display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 30px;
+            grid-template-columns: 1fr 310px;
+            gap: 26px;
+            align-items: start;
         }
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 25px;
+            gap: 20px;
         }
         .card {
-            background: white;
-            border-radius: 24px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 1px solid #eef2ff;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 1.3rem 1.5rem 1.5rem;
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition), box-shadow var(--transition);
+            border: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
         }
         .card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-xl);
+            border-color: #dde4f0;
         }
         .card h2 {
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
             display: flex;
@@ -76,53 +144,148 @@
             color: #1e293b;
         }
         .card h2 i {
-            color: #3b82f6;
-            font-size: 1.4rem;
+            width: 20px;
+            font-size: 1.1rem;
+            text-align: center;
         }
         .card p.desc {
-            color: #475569;
-            font-size: 0.9rem;
-            margin-bottom: 1.2rem;
-            border-left: 3px solid #3b82f6;
-            padding-left: 12px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
         }
-        input, textarea, button, select {
+        input,
+        textarea,
+        button,
+        select {
             font-family: inherit;
-            font-size: 0.95rem;
-            border-radius: 14px;
-            border: 1px solid #cbd5e1;
-            padding: 10px 14px;
+            font-size: 0.9rem;
+            border-radius: 10px;
+            border: 1.5px solid #dde1e7;
+            padding: 9px 13px;
             width: 100%;
-            margin-top: 8px;
-            transition: 0.2s;
+            margin-top: 6px;
+            transition: all var(--transition);
+            background: #fafbfc;
+            color: #1e293b;
         }
-        input:focus, textarea:focus, select:focus {
+        input:focus,
+        textarea:focus,
+        select:focus {
             outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+            background: #fff;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 70px;
         }
         button {
-            background: #3b82f6;
+            background: var(--primary);
             color: white;
             border: none;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s;
             width: auto;
-            padding: 10px 18px;
-            margin-top: 12px;
+            padding: 9px 17px;
+            margin-top: 8px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            box-shadow: 0 1px 2px rgba(59, 130, 246, 0.2);
+            transition: all var(--transition);
         }
         button:hover {
-            background: #2563eb;
+            background: var(--primary-hover);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            transform: translateY(-1px);
         }
-        .result-area {
+        button.btn-outline {
+            background: #fff;
+            color: var(--primary);
+            border: 1.5px solid var(--primary);
+            box-shadow: none;
+        }
+        button.btn-outline:hover {
+            background: #eff6ff;
+        }
+
+        /* ========== 子目录折叠面板样式 (details) ========== */
+        .sub-details {
+            margin-bottom: 0.8rem;
+            border: 1px solid #eef2ff;
+            border-radius: 12px;
+            background: #f9fafb;
+            transition: all 0.2s ease;
+        }
+        .sub-details[open] {
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .sub-details summary {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1e293b;
+            cursor: pointer;
+            border-radius: 12px;
+            background: #f9fafb;
+            transition: background 0.2s;
+            user-select: none;
+        }
+        .sub-details[open] > summary {
             background: #f1f5f9;
-            padding: 12px;
-            border-radius: 14px;
-            margin-top: 12px;
-            font-size: 0.9rem;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .sub-details summary:hover {
+            background: #eef2ff;
+        }
+        .sub-details summary::before {
+            content: '\f054';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.65rem;
+            color: #64748b;
+            transition: transform 0.25s ease;
+            width: 16px;
+            display: inline-flex;
+            justify-content: center;
+        }
+        .sub-details[open] > summary::before {
+            transform: rotate(90deg);
+        }
+        .sub-details .resource-link {
+            margin-left: 16px;
+            margin-right: 12px;
+            margin-bottom: 0.5rem;
+        }
+        .sub-details .resource-link:last-child {
+            margin-bottom: 10px;
+        }
+
+        .result-area {
+            background: #f8fafc;
+            padding: 11px 14px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-size: 0.85rem;
             word-break: break-all;
-            color: #0f172a;
+            color: #1e293b;
+            border: 1px solid #eef2ff;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
         }
         .inline-group {
             display: flex;
@@ -130,412 +293,605 @@
             flex-wrap: wrap;
             align-items: center;
         }
+        .resource-link {
+            margin-bottom: 0.7rem;
+        }
+        .resource-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .resource-link a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+        .resource-desc {
+            font-size: 0.78rem;
+            color: #64748b;
+            margin-top: 2px;
+            line-height: 1.4;
+        }
         .sidebar {
             position: sticky;
             top: 20px;
             align-self: start;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
         .sidebar-ad {
             background: white;
-            border-radius: 24px;
-            padding: 20px;
+            border-radius: var(--radius);
+            padding: 18px;
             text-align: center;
-            border: 1px solid #eef2ff;
-            margin-bottom: 25px;
+            border: 1px dashed #cbd5e1;
+            box-shadow: var(--shadow-sm);
         }
         .sidebar-ad .ad-placeholder {
-            min-height: 250px;
+            min-height: 240px;
             flex-direction: column;
+            gap: 10px;
         }
         .info-box {
             background: white;
-            border-radius: 24px;
+            border-radius: var(--radius);
             padding: 20px;
-            border: 1px solid #eef2ff;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
         }
         .info-box h3 {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .info-box p,
+        .info-box li {
+            font-size: 0.82rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+        .info-box hr {
+            margin: 14px 0;
+            border: none;
+            border-top: 1px solid #eef2ff;
         }
         footer {
-            margin-top: 50px;
+            margin-top: 44px;
             text-align: center;
             border-top: 1px solid #e2e8f0;
-            padding-top: 30px;
-            font-size: 0.85rem;
-            color: #475569;
+            padding-top: 26px;
+            font-size: 0.82rem;
+            color: #64748b;
         }
         footer a {
-            color: #3b82f6;
+            color: var(--primary);
             text-decoration: none;
             margin: 0 10px;
+            font-weight: 500;
         }
-        @media (max-width: 800px) {
+        footer a:hover {
+            color: #1d4ed8;
+        }
+        footer small {
+            display: block;
+            margin-top: 8px;
+            color: #94a3b8;
+        }
+        @media (max-width:900px) {
             .main-grid {
                 grid-template-columns: 1fr;
             }
             .sidebar {
                 position: static;
-                margin-top: 20px;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .sidebar>* {
+                flex: 1 1 250px;
             }
             .tools-grid {
                 grid-template-columns: 1fr;
             }
         }
-        .base64-row {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .base64-item {
-            background: #f8fafc;
-            border-radius: 16px;
-            padding: 12px;
-        }
-        .resource-link {
-            margin-bottom: 0.75rem;
-        }
-        .resource-link a {
-            color: #3b82f6;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .resource-link a:hover {
-            text-decoration: underline;
-        }
-        .resource-desc {
-            font-size: 0.85rem;
-            color: #475569;
-            margin-top: 4px;
+        @media (max-width:500px) {
+            body {
+                padding: 8px;
+            }
+            .card {
+                padding: 1rem;
+            }
+            .inline-group {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .sidebar {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <!-- 顶部广告位 -->
-    <div class="top-ad">
-        <div class="ad-placeholder">
-            <i class="fas fa-ad" style="margin-right: 8px;"></i> 广告预留位 - 将 Google AdSense 代码替换此处
+    <div class="container">
+        <div class="top-ad">
+            <div class="ad-placeholder">
+                <i class="fas fa-ad"></i> 广告预留位 · 将 Google AdSense 代码替换此处即可投放广告
+            </div>
         </div>
-    </div>
 
-    <div class="main-grid">
-        <!-- 左侧工具区 -->
-        <div>
-            <h1 style="font-size: 1.8rem; margin-bottom: 0.5rem;">🛠️ 第七工具箱 | Toolbox7 - 免费在线工具</h1>
-            <p style="color: #475569; margin-bottom: 30px;">免费、轻量、无需登录 · 每天都会用到的实用小工具</p>
+        <div class="header-area">
+            <h1>
+                <span class="logo-icon">🛠️</span> 第七工具箱 | Toolbox7
+            </h1>
+            <div class="subtitle">
+                <span class="badge">✨ 完全免费 · 程序员利器</span>
+                <span>本地运行 · 无需登录 · 即开即用</span>
+            </div>
+        </div>
+
+        <div class="main-grid">
             <div class="tools-grid">
-                <!-- 工具1: 随机密码生成器 -->
+                <!-- 随机密码生成器 -->
                 <div class="card">
                     <h2><i class="fas fa-key"></i> 随机密码生成器</h2>
                     <p class="desc">生成高强度随机密码，可自定义长度</p>
                     <div class="inline-group">
-                        <label style="flex:1">密码长度:
+                        <label style="flex:1;font-size:0.85rem;">长度
                             <input type="number" id="pwdLength" value="12" min="6" max="32">
                         </label>
-                        <button id="genPwdBtn"><i class="fas fa-sync-alt"></i> 生成密码</button>
+                        <button id="genPwdBtn"><i class="fas fa-sync-alt"></i> 生成</button>
                     </div>
                     <div class="result-area" id="passwordResult">点击生成</div>
                 </div>
 
-                <!-- 工具2: 字数统计 -->
+                <!-- 字数统计 -->
                 <div class="card">
-                    <h2><i class="fas fa-chart-simple"></i> 字数统计工具</h2>
+                    <h2><i class="fas fa-chart-simple"></i> 字数统计</h2>
                     <p class="desc">实时统计字符数、单词数、句子数</p>
-                    <textarea id="textInput" rows="4" placeholder="在这里输入或粘贴文本..."></textarea>
+                    <textarea id="textInput" rows="3" placeholder="输入或粘贴文本..."></textarea>
                     <div class="result-area" id="wordStats">字符: 0 | 单词: 0 | 句子: 0</div>
                 </div>
 
-                <!-- 工具3: 时间戳转换器 -->
+                <!-- 时间戳转换 -->
                 <div class="card">
                     <h2><i class="fas fa-clock"></i> 时间戳转换器</h2>
                     <p class="desc">Unix时间戳 ↔ 可读日期时间</p>
-                    <div style="margin-bottom: 12px;">
-                        <label>时间戳 (秒):</label>
-                        <input type="number" id="timestampInput" placeholder="例如 1716192000">
-                        <button id="tsToDateBtn">→ 转为日期</button>
-                    </div>
-                    <div>
-                        <label>日期时间:</label>
-                        <input type="datetime-local" id="datetimeInput">
-                        <button id="dateToTsBtn">→ 转为时间戳</button>
-                    </div>
+                    <input type="number" id="timestampInput" placeholder="时间戳(秒) 如 1716192000">
+                    <button id="tsToDateBtn">转为日期 →</button>
+                    <input type="datetime-local" id="datetimeInput">
+                    <button id="dateToTsBtn">转为时间戳 →</button>
                     <div class="result-area" id="timestampResult">等待转换</div>
                 </div>
 
-                <!-- 工具4: 颜色选择器 -->
+                <!-- 颜色选择器 -->
                 <div class="card">
                     <h2><i class="fas fa-palette"></i> 颜色选择器</h2>
                     <p class="desc">拾取颜色，获取HEX/RGB值</p>
                     <input type="color" id="colorPicker" value="#3b82f6">
-                    <div class="result-area" id="colorResult" style="background: #3b82f6; color: white;">HEX: #3b82f6</div>
+                    <div class="result-area" id="colorResult" style="background:#3b82f6;color:white;">HEX: #3b82f6</div>
                 </div>
 
-                <!-- 工具5: UUID生成器 -->
+                <!-- UUID生成器 -->
                 <div class="card">
                     <h2><i class="fas fa-fingerprint"></i> UUID生成器</h2>
-                    <p class="desc">生成随机UUID v4标识符，用于开发或测试</p>
-                    <button id="genUuidBtn"><i class="fas fa-dice-d6"></i> 生成新UUID</button>
+                    <p class="desc">生成随机UUID v4标识符</p>
+                    <button id="genUuidBtn"><i class="fas fa-dice-d6"></i> 生成UUID</button>
                     <div class="result-area" id="uuidResult">点击生成</div>
                 </div>
 
-                <!-- 工具6: Base64编解码器 -->
+                <!-- Base64编解码 -->
                 <div class="card">
-                    <h2><i class="fas fa-code"></i> Base64编解码器</h2>
+                    <h2><i class="fas fa-code"></i> Base64编解码</h2>
                     <p class="desc">文本与Base64互转，支持中文</p>
-                    <div class="base64-row">
-                        <div class="base64-item">
-                            <label>原文：</label>
-                            <textarea id="base64Input" rows="2" placeholder="请输入要编码的文本..."></textarea>
-                            <button id="encodeBase64Btn">编码为Base64</button>
-                        </div>
-                        <div class="base64-item">
-                            <label>Base64字符串：</label>
-                            <textarea id="base64Output" rows="2" placeholder="编码结果或待解码的内容..."></textarea>
-                            <button id="decodeBase64Btn">解码为原文</button>
-                        </div>
+                    <textarea id="base64Input" rows="2" placeholder="原文"></textarea>
+                    <button id="encodeBase64Btn">编码为Base64 ↓</button>
+                    <textarea id="base64Output" rows="2" placeholder="Base64字符串"></textarea>
+                    <button id="decodeBase64Btn">解码为原文 ↑</button>
+                </div>
+
+                <!-- 二维码生成器 -->
+                <div class="card">
+                    <h2><i class="fas fa-qrcode"></i> 二维码生成器</h2>
+                    <p class="desc">输入文本或链接，一键生成二维码图片</p>
+                    <input type="text" id="qrText" placeholder="输入文本或网址...">
+                    <button id="genQrBtn"><i class="fas fa-arrow-right"></i> 生成二维码</button>
+                    <div class="result-area" id="qrResult" style="justify-content:center; background:white;">
+                        <span style="color:#94a3b8;">二维码将显示在这里</span>
                     </div>
                 </div>
 
-                <!-- 资源推荐板块（横跨整行） -->
+                <!-- JSON格式化 -->
+                <div class="card">
+                    <h2><i class="fas fa-brackets-curly"></i> JSON格式化</h2>
+                    <p class="desc">压缩或美化JSON字符串，快速校验</p>
+                    <textarea id="jsonInput" rows="3" placeholder='{"name":"toolbox7","free":true}'></textarea>
+                    <div class="inline-group">
+                        <button id="formatJsonBtn"><i class="fas fa-align-left"></i> 美化</button>
+                        <button id="minifyJsonBtn" class="btn-outline"><i class="fas fa-compress"></i> 压缩</button>
+                    </div>
+                    <div class="result-area" id="jsonResult" style="white-space:pre-wrap;">等待格式化</div>
+                </div>
+
+                <!-- URL编解码 -->
+                <div class="card">
+                    <h2><i class="fas fa-link"></i> URL编解码</h2>
+                    <p class="desc">对URL进行编码或解码，处理特殊字符</p>
+                    <input type="text" id="urlInput" placeholder="输入文本或URL">
+                    <button id="encodeUrlBtn">编码 →</button>
+                    <button id="decodeUrlBtn" class="btn-outline">解码 ←</button>
+                    <div class="result-area" id="urlResult">结果将显示在这里</div>
+                </div>
+
+                <!-- ==================== 资源推荐区域（横跨整行） ==================== -->
                 <div style="grid-column: 1 / -1; margin-top: 0.5rem;">
-                    <h2 style="font-size: 1.5rem; display: flex; align-items: center; gap: 10px;">
-                        <i class="fas fa-gem" style="color: #3b82f6;"></i> 📦 实用资源精选
+                    <h2 style="font-size:1.5rem;display:flex;align-items:center;gap:10px;margin-bottom:0.3rem;">
+                        <i class="fas fa-gem" style="color:#3b82f6;"></i> 📦 实用资源精选
                     </h2>
-                    <p style="color: #475569; margin-bottom: 1rem;">发现好工具 · 探索新世界</p>
+                    <p style="color:#64748b;margin-bottom:1.2rem;">发现好工具 · 程序员百宝箱 · 学习效率加倍</p>
                     <div class="tools-grid">
-                        <!-- 游戏类 -->
+                        <!-- 图片 / 设计类 -->
                         <div class="card">
-                            <h2><i class="fas fa-gamepad"></i> 🎮 游戏乐园</h2>
-                            <div class="resource-link">
-                                <a href="https://itch.io" target="_blank" rel="noopener noreferrer">itch.io</a>
-                                <div class="resource-desc">独立游戏的天堂，海量佳作免费或“按需付费”。</div>
-                            </div>
-                            <div class="resource-link">
-                                <a href="https://www.freeonlinegame.games" target="_blank" rel="noopener noreferrer">FreeOnlineGame.games</a>
-                                <div class="resource-desc">无需下载，打开网页就能玩的最新网页小游戏。</div>
-                            </div>
+                            <h2><i class="fas fa-image"></i> 🎨 图片编辑 / 抠图 / 矢量</h2>
+                            <div class="resource-link"><a href="https://www.photopea.com" target="_blank">Photopea</a><div class="resource-desc">免费在线PS，支持PSD/图层/抠图。</div></div>
+                            <div class="resource-link"><a href="https://www.remove.bg" target="_blank">Remove.bg</a><div class="resource-desc">AI一键去除背景，效果惊艳。</div></div>
+                            <div class="resource-link"><a href="https://www.flaticon.com" target="_blank">Flaticon</a><div class="resource-desc">海量免费矢量图标，SVG/PNG。</div></div>
+                            <div class="resource-link"><a href="https://icons8.com" target="_blank">Icons8</a><div class="resource-desc">图标、插画、音乐素材库。</div></div>
+                            <div class="resource-link"><a href="https://www.cleanup.pictures" target="_blank">Cleanup.pictures</a><div class="resource-desc">涂抹去除图片中不需要的物体。</div></div>
                         </div>
-                        <!-- AI 工具类 -->
+                        <!-- 电影 / 影视类 -->
                         <div class="card">
-                            <h2><i class="fas fa-robot"></i> 🤖 AI 工具站</h2>
-                            <div class="resource-link">
-                                <a href="https://chat.deepseek.com" target="_blank" rel="noopener noreferrer">DeepSeek (Chat)</a>
-                                <div class="resource-desc">编程和通用AI辅助神器，国内可直接访问，完全免费。</div>
-                            </div>
-                            <div class="resource-link">
-                                <a href="https://gamma.app" target="_blank" rel="noopener noreferrer">Gamma (AI PPT)</a>
-                                <div class="resource-desc">输入想法即可生成演示文稿，免费版足矣。</div>
-                            </div>
-                            <div class="resource-link">
-                                <a href="https://spider.ai" target="_blank" rel="noopener noreferrer">SpiderAI (聊天聚合)</a>
-                                <div class="resource-desc">整合了ChatGPT、Claude等主流AI模型。</div>
-                            </div>
+                            <h2><i class="fas fa-film"></i> 🍿 免费电影 / 追剧</h2>
+                            <div class="resource-link"><a href="https://www.libvio.me" target="_blank">LIBVIO</a><div class="resource-desc">高清影视，更新快，无广告打扰。</div></div>
+                            <div class="resource-link"><a href="https://www.hdtoday.tv" target="_blank">HDToday</a><div class="resource-desc">海外电影电视剧，支持中文字幕。</div></div>
+                            <div class="resource-link"><a href="https://www.iyf.tv" target="_blank">IYF.TV</a><div class="resource-desc">国产剧、综艺、动漫播放流畅。</div></div>
+                            <div class="resource-link"><a href="https://www.nunuyy.top" target="_blank">努努影院</a><div class="resource-desc">经典老片与热门新片合集。</div></div>
                         </div>
-                        <!-- 免费影音类 -->
+                        <!-- 工作常用 / 效率类 -->
                         <div class="card">
-                            <h2><i class="fas fa-video"></i> 🎬 免费影音</h2>
-                            <div class="resource-link">
-                                <a href="https://www.xklx1.com" target="_blank" rel="noopener noreferrer">星空落资源网</a>
-                                <div class="resource-desc">找资料、考研素材、设计模板，资源分类清晰。</div>
-                            </div>
-                            <div class="resource-link">
-                                <a href="https://fmhy.net" target="_blank" rel="noopener noreferrer">FMHY (全站集合)</a>
-                                <div class="resource-desc">全球最大免费资源集合网站，一张巨大的“资源地图”。</div>
-                            </div>
-                            <div class="resource-link">
-                                <a href="https://tinywow.com" target="_blank" rel="noopener noreferrer">TinyWow</a>
-                                <div class="resource-desc">无需注册、无广告的200多种免费在线工具。</div>
-                            </div>
+                            <h2><i class="fas fa-briefcase"></i> 💼 工作常用工具</h2>
+                            <div class="resource-link"><a href="https://www.ilovepdf.com" target="_blank">iLovePDF</a><div class="resource-desc">PDF合并、压缩、转换全套。</div></div>
+                            <div class="resource-link"><a href="https://tinywow.com" target="_blank">TinyWow</a><div class="resource-desc">200+免费工具，图片/PDF/视频。</div></div>
+                            <div class="resource-link"><a href="https://excalidraw.com" target="_blank">Excalidraw</a><div class="resource-desc">手绘风格白板，画图协作利器。</div></div>
+                            <div class="resource-link"><a href="https://www.processon.com" target="_blank">ProcessOn</a><div class="resource-desc">在线流程图、思维导图免费工具。</div></div>
                         </div>
-                        <!-- 软件与工具类 -->
+                        <!-- GitHub 开源工具类 -->
                         <div class="card">
-                            <h2><i class="fas fa-code"></i> 💻 软件与工具</h2>
-                            <div class="resource-link">
-                                <a href="https://www.openshot.org" target="_blank" rel="noopener noreferrer">OpenShot</a>
-                                <div class="resource-desc">完全免费开源，跨平台视频剪辑软件，适合新手入门。</div>
-                            </div>
-                            <div class="resource-link">
-                                <a href="https://www.qi9v.com" target="_blank" rel="noopener noreferrer">蛋蛋软件库</a>
-                                <div class="resource-desc">“永久免费”的手机软件库，下载速度快。</div>
-                            </div>
+                            <h2><i class="fab fa-github"></i> 🧰 GitHub 开源工具</h2>
+                            <div class="resource-link"><a href="https://squoosh.app" target="_blank">Squoosh (图片压缩)</a><div class="resource-desc">Google开源，本地压缩，质量高。</div></div>
+                            <div class="resource-link"><a href="https://app.diagrams.net" target="_blank">draw.io (绘图)</a><div class="resource-desc">开源流程图/思维导图，可离线。</div></div>
+                            <div class="resource-link"><a href="https://carbon.now.sh" target="_blank">Carbon (代码截图)</a><div class="resource-desc">代码生成精美图片分享。</div></div>
+                            <div class="resource-link"><a href="https://regex101.com" target="_blank">regex101 (正则测试)</a><div class="resource-desc">在线正则调试解释，多语言支持。</div></div>
+                            <div class="resource-link"><a href="https://transform.tools" target="_blank">Transform (格式转换)</a><div class="resource-desc">JSON ↔ YAML ↔ XML 互转。</div></div>
+                        </div>
+                        <!-- 装机必备 / 系统工具类 -->
+                        <div class="card">
+                            <h2><i class="fas fa-toolbox"></i> 💻 装机必备工具</h2>
+                            <div class="resource-link"><a href="https://rufus.ie" target="_blank">Rufus (启动盘)</a><div class="resource-desc">制作USB启动盘，快速纯净。</div></div>
+                            <div class="resource-link"><a href="https://www.ventoy.net" target="_blank">Ventoy (多合一启动)</a><div class="resource-desc">一个U盘放多个系统镜像。</div></div>
+                            <div class="resource-link"><a href="https://ninite.com" target="_blank">Ninite (批量安装)</a><div class="resource-desc">一次安装多个常用软件，无捆绑。</div></div>
+                            <div class="resource-link"><a href="https://chocolatey.org" target="_blank">Chocolatey (包管理)</a><div class="resource-desc">Windows命令行软件安装管理。</div></div>
+                        </div>
+                        <!-- AI 工具集 -->
+                        <div class="card">
+                            <h2><i class="fas fa-robot"></i> 🤖 AI 工具集</h2>
+                            <div class="resource-link"><a href="https://chat.openai.com" target="_blank">ChatGPT</a><div class="resource-desc">OpenAI旗舰对话模型，免费额度。</div></div>
+                            <div class="resource-link"><a href="https://claude.ai" target="_blank">Claude</a><div class="resource-desc">长文本分析出色，安全可靠。</div></div>
+                            <div class="resource-link"><a href="https://gemini.google.com" target="_blank">Gemini</a><div class="resource-desc">Google多模态AI，免费使用。</div></div>
+                            <div class="resource-link"><a href="https://chat.deepseek.com" target="_blank">DeepSeek</a><div class="resource-desc">国内免费AI，编程/中文能力强。</div></div>
+                            <div class="resource-link"><a href="https://www.perplexity.ai" target="_blank">Perplexity</a><div class="resource-desc">AI搜索引擎，带来源引用。</div></div>
+                            <div class="resource-link"><a href="https://gamma.app" target="_blank">Gamma (AI PPT)</a><div class="resource-desc">输入想法自动生成演示文稿。</div></div>
+                        </div>
+                        <!-- 免费素材 / 图库 -->
+                        <div class="card">
+                            <h2><i class="fas fa-camera-retro"></i> 📷 免费图片/视频素材</h2>
+                            <div class="resource-link"><a href="https://unsplash.com" target="_blank">Unsplash</a><div class="resource-desc">高质量免费商用图片，每日更新。</div></div>
+                            <div class="resource-link"><a href="https://www.pexels.com" target="_blank">Pexels</a><div class="resource-desc">免费图片和视频素材，无需署名。</div></div>
+                            <div class="resource-link"><a href="https://pixabay.com" target="_blank">Pixabay</a><div class="resource-desc">超百万免费图片、插画、视频。</div></div>
+                            <div class="resource-link"><a href="https://mixkit.co" target="_blank">Mixkit</a><div class="resource-desc">免费高清视频、音效、动效模板。</div></div>
+                        </div>
+                        <!-- 学习 / 课程类 -->
+                        <div class="card">
+                            <h2><i class="fas fa-graduation-cap"></i> 📚 免费学习资源</h2>
+                            <div class="resource-link"><a href="https://www.khanacademy.org" target="_blank">可汗学院</a><div class="resource-desc">全球知名免费课程，涵盖多学科。</div></div>
+                            <div class="resource-link"><a href="https://ocw.mit.edu" target="_blank">MIT公开课</a><div class="resource-desc">麻省理工免费课程材料。</div></div>
+                            <div class="resource-link"><a href="https://www.coursera.org" target="_blank">Coursera (旁听)</a><div class="resource-desc">名校课程免费旁听，付费可获证书。</div></div>
+                            <div class="resource-link"><a href="https://www.edx.org" target="_blank">edX</a><div class="resource-desc">哈佛、MIT等大学免费在线课程。</div></div>
+                        </div>
+                        <!-- 开发工具 / 在线IDE (已扩充) -->
+                        <div class="card">
+                            <h2><i class="fas fa-laptop-code"></i> ⚡ 在线IDE & 代码沙盒</h2>
+                            <div class="resource-link"><a href="https://codepen.io" target="_blank">CodePen</a><div class="resource-desc">前端代码在线编辑与展示社区。</div></div>
+                            <div class="resource-link"><a href="https://replit.com" target="_blank">Replit</a><div class="resource-desc">支持50+语言的在线编程环境。</div></div>
+                            <div class="resource-link"><a href="https://stackblitz.com" target="_blank">StackBlitz</a><div class="resource-desc">在线IDE，快速启动Vue/React项目。</div></div>
+                            <div class="resource-link"><a href="https://codesandbox.io" target="_blank">CodeSandbox</a><div class="resource-desc">即时全栈Web开发沙盒。</div></div>
+                            <div class="resource-link"><a href="https://glitch.com" target="_blank">Glitch</a><div class="resource-desc">协作式Web应用快速原型。</div></div>
+                            <div class="resource-link"><a href="https://www.onlinegdb.com" target="_blank">OnlineGDB</a><div class="resource-desc">支持C/C++/Java/Python在线调试。</div></div>
+                        </div>
+                        <!-- 文件转换 / 传输 -->
+                        <div class="card">
+                            <h2><i class="fas fa-exchange-alt"></i> 🔄 文件转换与传输</h2>
+                            <div class="resource-link"><a href="https://cloudconvert.com" target="_blank">CloudConvert</a><div class="resource-desc">支持200+格式的在线文件转换器。</div></div>
+                            <div class="resource-link"><a href="https://www.convertio.co" target="_blank">Convertio</a><div class="resource-desc">文档、图片、音视频格式转换。</div></div>
+                            <div class="resource-link"><a href="https://wetransfer.com" target="_blank">WeTransfer</a><div class="resource-desc">免费发送最大2GB文件，无需注册。</div></div>
+                            <div class="resource-link"><a href="https://send-anywhere.com" target="_blank">Send Anywhere</a><div class="resource-desc">点对点文件传输，安全快速。</div></div>
+                        </div>
+                        <!-- 其他宝藏站点 -->
+                        <div class="card">
+                            <h2><i class="fas fa-globe"></i> 🌐 其他宝藏站点</h2>
+                            <div class="resource-link"><a href="https://fmhy.net" target="_blank">FMHY</a><div class="resource-desc">全球最大免费资源导航地图。</div></div>
+                            <div class="resource-link"><a href="https://itch.io" target="_blank">itch.io</a><div class="resource-desc">独立游戏天堂，免费创意游戏。</div></div>
+                            <div class="resource-link"><a href="https://alternativeto.net" target="_blank">AlternativeTo</a><div class="resource-desc">寻找任何软件的免费/开源替代品。</div></div>
+                            <div class="resource-link"><a href="https://www.deepl.com" target="_blank">DeepL翻译</a><div class="resource-desc">高精度AI翻译，支持文档翻译。</div></div>
+                        </div>
+
+                        <!-- ========= 程序员终极工具大全（子目录默认折叠，无外层折叠按钮） ========= -->
+                        <div class="card" id="programmerToolsCard">
+                            <h2>
+                                <i class="fas fa-terminal"></i> 🧑‍💻 编程IDE · 菜鸟教程 · 手机编程App
+                            </h2>
+                            <p class="desc">集成开发环境、在线教程、移动编程神器，从入门到进阶。点击各分类标题展开查看。</p>
+
+                            <!-- 子目录1：编程入门/菜鸟教程 (默认折叠) -->
+                            <details class="sub-details">
+                                <summary><i class="fas fa-graduation-cap"></i> <strong>📘 编程入门 / 菜鸟教程</strong></summary>
+                                <div class="resource-link"><a href="https://www.runoob.com" target="_blank">菜鸟教程 (runoob.com)</a><div class="resource-desc">全网最全中文编程教程，HTML/CSS/JS/Python/Java等基础+实战。</div></div>
+                                <div class="resource-link"><a href="https://www.w3school.com.cn" target="_blank">W3School 中文站</a><div class="resource-desc">前端开发经典教程，适配最新标准。</div></div>
+                                <div class="resource-link"><a href="https://developer.mozilla.org/zh-CN/" target="_blank">MDN Web Docs</a><div class="resource-desc">Mozilla 权威技术文档，前端开发者必备。</div></div>
+                                <div class="resource-link"><a href="https://www.freecodecamp.org" target="_blank">freeCodeCamp</a><div class="resource-desc">免费编程课程 + 实战项目，开源社区认证。</div></div>
+                            </details>
+
+                            <!-- 子目录2：桌面IDE/编辑器下载 (默认折叠) -->
+                            <details class="sub-details">
+                                <summary><i class="fab fa-dev"></i> <strong>⚙️ 桌面IDE / 编辑器下载</strong></summary>
+                                <div class="resource-link"><a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a><div class="resource-desc">全球最流行编辑器，海量插件，轻量高效。</div></div>
+                                <div class="resource-link"><a href="https://www.jetbrains.com/idea/download/" target="_blank">IntelliJ IDEA (Community)</a><div class="resource-desc">Java/Kotlin IDE，智能补全与重构神器。</div></div>
+                                <div class="resource-link"><a href="https://www.sublimetext.com" target="_blank">Sublime Text</a><div class="resource-desc">极速文本编辑器，支持多重选择。</div></div>
+                                <div class="resource-link"><a href="https://www.postman.com" target="_blank">Postman</a><div class="resource-desc">API调试利器，接口测试与文档生成。</div></div>
+                            </details>
+
+                            <!-- 子目录3：手机编程App (默认折叠) -->
+                            <details class="sub-details">
+                                <summary><i class="fas fa-database"></i> <strong>📱 手机编程App (Android/iOS)</strong></summary>
+                                <div class="resource-link"><a href="https://termux.com" target="_blank">Termux</a><div class="resource-desc">安卓终端模拟器，运行Python/Node/编译器，玩转Linux工具链。</div></div>
+                                <div class="resource-link"><a href="https://play.google.com/store/apps/details?id=com.duolingo.sololearn" target="_blank">Sololearn</a><div class="resource-desc">碎片化编程学习，互动挑战，支持多语言。</div></div>
+                                <div class="resource-link"><a href="https://grasshopper.app" target="_blank">Grasshopper (谷歌出品)</a><div class="resource-desc">零基础学JavaScript，游戏式编程体验。</div></div>
+                                <div class="resource-link"><a href="https://dcoder.tech" target="_blank">Dcoder (移动端IDE)</a><div class="resource-desc">手机上写代码并编译运行，支持Java/Python/C++等。</div></div>
+                                <div class="resource-link"><a href="https://play.google.com/store/apps/details?id=ru.iiec.pydroid3" target="_blank">Pydroid 3</a><div class="resource-desc">安卓最强Python IDE，预装科学库，离线运行。</div></div>
+                                <div class="resource-link"><a href="https://aidlux.com" target="_blank">AidLearning / AIDE</a><div class="resource-desc">安卓编程环境，支持Python/C++/Java及图形界面。</div></div>
+                            </details>
+
+                            <!-- 子目录4：刷题/技术社区 (默认折叠) -->
+                            <details class="sub-details">
+                                <summary><i class="fas fa-chart-line"></i> <strong>🎯 刷题 / 技术社区</strong></summary>
+                                <div class="resource-link"><a href="https://leetcode.cn" target="_blank">力扣 LeetCode</a><div class="resource-desc">算法题库，大厂面试必备，周赛与题解社区。</div></div>
+                                <div class="resource-link"><a href="https://www.nowcoder.com" target="_blank">牛客网</a><div class="resource-desc">笔试面试题库 + 企业真题 + 编程竞赛。</div></div>
+                                <div class="resource-link"><a href="https://stackoverflow.com" target="_blank">Stack Overflow</a><div class="resource-desc">全球开发者问答社区，99%编程问题已有答案。</div></div>
+                                <div class="resource-link"><a href="https://github.com" target="_blank">GitHub</a><div class="resource-desc">开源代码托管，学习优秀项目，协作开发。</div></div>
+                                <div class="resource-link"><a href="https://www.codewars.com" target="_blank">Codewars</a><div class="resource-desc">通过挑战提升编程段位，支持30+语言。</div></div>
+                            </details>
+
+                            <!-- 子目录5：云IDE & 协作平台 (默认折叠) -->
+                            <details class="sub-details">
+                                <summary><i class="fas fa-cloud-upload-alt"></i> <strong>☁️ 云IDE & 协作平台</strong></summary>
+                                <div class="resource-link"><a href="https://gitpod.io" target="_blank">Gitpod</a><div class="resource-desc">GitHub / GitLab 一键云开发环境。</div></div>
+                                <div class="resource-link"><a href="https://www.jdoodle.com" target="_blank">JDoodle</a><div class="resource-desc">轻量级在线编辑器，快速测试代码片段。</div></div>
+                                <div class="resource-link"><a href="https://onecompiler.com" target="_blank">OneCompiler</a><div class="resource-desc">支持多语言的在线编译器与聊天室。</div></div>
+                                <div class="resource-link"><a href="https://replit.com" target="_blank">Replit (再推荐)</a><div class="resource-desc">强大协作与云端部署，支持数据库。</div></div>
+                                <div class="resource-link"><a href="https://codeanywhere.com" target="_blank">Codeanywhere</a><div class="resource-desc">跨平台云端IDE，随时随地编码。</div></div>
+                            </details>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- 右侧边栏：广告+信息 -->
-        <div class="sidebar">
-            <div class="sidebar-ad">
-                <div class="ad-placeholder" style="min-height: 250px; flex-direction: column;">
-                    <i class="fas fa-ad"></i><br> 广告预留位
+            <div class="sidebar">
+                <div class="sidebar-ad">
+                    <div class="ad-placeholder" style="min-height:250px;flex-direction:column;">
+                        <i class="fas fa-ad"></i><br> 广告预留位<br> (Google AdSense)
+                    </div>
+                </div>
+                <div class="info-box">
+                    <h3><i class="fas fa-info-circle"></i> 关于工具箱</h3>
+                    <p>所有工具均在浏览器本地运行，安全可靠。资源链接均为第三方网站，仅作导航分享，不承担内容责任。新增编程IDE、菜鸟教程、手机编程App全覆盖，助力开发者效率起飞。</p>
+                    <hr>
+                    <p style="font-size:0.78rem;color:#475569;">✨ 提示：UUID符合RFC4122标准；Base64支持中文；二维码使用稳定API；子目录默认折叠，点击标题即可展开。</p>
                 </div>
             </div>
-            <div class="info-box">
-                <h3><i class="fas fa-info-circle"></i> 关于第七工具箱</h3>
-                <p style="font-size: 0.9rem;">本站所有工具均在浏览器本地运行，内置链接均为各资源的官方网站。我们不做任何内容存储，仅作为导航，不承担链接网站的责任。如涉侵权，请通过联系方式告知。</p>
-                <hr style="margin: 15px 0; border-color: #eef2ff;">
-                <p style="font-size: 0.8rem; color:#334155;">✨ 小贴士：UUID符合RFC4122标准；Base64支持中文和特殊符号。</p>
-            </div>
         </div>
+
+        <footer>
+            © 2026 第七工具箱 (Toolbox7) |
+            <a href="#" id="privacyLink">隐私政策</a> |
+            <a href="#" id="aboutLink">关于我们</a> |
+            <a href="mailto:admin@example.com">联系我们</a> |
+            <a href="mailto:admin@example.com">侵权联系: admin@example.com</a>
+            <br><small>本网站使用Cookie优化广告展示，继续浏览表示同意。</small>
+        </footer>
     </div>
 
-    <footer>
-        © 2026 第七工具箱 (Toolbox7) | 
-        <a href="#" id="privacyLink">隐私政策</a> | 
-        <a href="#" id="aboutLink">关于我们</a> | 
-        <a href="mailto:admin@example.com">联系我们</a> |
-        <a href="mailto:admin@example.com">侵权联系: 1735712394@qq.com</a>
-        <br><small>本网站使用 Cookie 优化广告展示，继续浏览表示同意。</small>
-    </footer>
-</div>
-
-<script>
-    // 随机密码生成器
-    function generatePassword(length) {
-        const upper = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
-        const lower = 'abcdefghijkmnopqrstuvwxyz';
-        const numbers = '23456789';
-        const symbols = '!@#$%^&*()_+[]{}';
-        let all = upper + lower + numbers + symbols;
-        let password = '';
-        password += upper[Math.floor(Math.random() * upper.length)];
-        password += lower[Math.floor(Math.random() * lower.length)];
-        password += numbers[Math.floor(Math.random() * numbers.length)];
-        password += symbols[Math.floor(Math.random() * symbols.length)];
-        for(let i = password.length; i < length; i++) {
-            password += all[Math.floor(Math.random() * all.length)];
+    <script>
+        // 随机密码生成
+        function generatePassword(length) {
+            const upper = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+            const lower = 'abcdefghijkmnopqrstuvwxyz';
+            const numbers = '23456789';
+            const symbols = '!@#$%^&*()_+[]{}';
+            let all = upper + lower + numbers + symbols;
+            let password = '';
+            password += upper[Math.floor(Math.random() * upper.length)];
+            password += lower[Math.floor(Math.random() * lower.length)];
+            password += numbers[Math.floor(Math.random() * numbers.length)];
+            password += symbols[Math.floor(Math.random() * symbols.length)];
+            for (let i = password.length; i < length; i++) {
+                password += all[Math.floor(Math.random() * all.length)];
+            }
+            return password.split('').sort(() => 0.5 - Math.random()).join('');
         }
-        return password.split('').sort(() => 0.5 - Math.random()).join('');
-    }
-    document.getElementById('genPwdBtn').addEventListener('click', () => {
-        let len = parseInt(document.getElementById('pwdLength').value);
-        if(isNaN(len)) len = 12;
-        len = Math.min(32, Math.max(6, len));
-        document.getElementById('passwordResult').innerText = generatePassword(len);
-    });
-
-    // 字数统计
-    const textarea = document.getElementById('textInput');
-    const wordStats = document.getElementById('wordStats');
-    function updateStats() {
-        let text = textarea.value;
-        let charCount = text.length;
-        let words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
-        let sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
-        wordStats.innerText = `字符: ${charCount} | 单词: ${words} | 句子: ${sentences}`;
-    }
-    textarea.addEventListener('input', updateStats);
-    updateStats();
-
-    // 时间戳转换
-    const tsInput = document.getElementById('timestampInput');
-    const datetimeInput = document.getElementById('datetimeInput');
-    const tsResult = document.getElementById('timestampResult');
-    function setDefaultDateTime() {
-        let now = new Date();
-        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-        datetimeInput.value = now.toISOString().slice(0, 16);
-    }
-    setDefaultDateTime();
-    document.getElementById('tsToDateBtn').addEventListener('click', () => {
-        let ts = parseInt(tsInput.value);
-        if(isNaN(ts)) {
-            tsResult.innerText = '❌ 请输入有效时间戳(秒)';
-            return;
-        }
-        let date = new Date(ts * 1000);
-        if(isNaN(date.getTime())) {
-            tsResult.innerText = '❌ 无效的时间戳';
-            return;
-        }
-        tsResult.innerText = date.toLocaleString('zh-CN');
-    });
-    document.getElementById('dateToTsBtn').addEventListener('click', () => {
-        let dateStr = datetimeInput.value;
-        if(!dateStr) {
-            tsResult.innerText = '❌ 请选择日期时间';
-            return;
-        }
-        let date = new Date(dateStr);
-        let ts = Math.floor(date.getTime() / 1000);
-        if(isNaN(ts)) tsResult.innerText = '❌ 转换失败';
-        else tsResult.innerText = `Unix时间戳: ${ts}`;
-    });
-
-    // 颜色选择器
-    const colorPicker = document.getElementById('colorPicker');
-    const colorResult = document.getElementById('colorResult');
-    function updateColor() {
-        let hex = colorPicker.value;
-        let r = parseInt(hex.slice(1,3), 16);
-        let g = parseInt(hex.slice(3,5), 16);
-        let b = parseInt(hex.slice(5,7), 16);
-        colorResult.innerText = `HEX: ${hex}  |  RGB: ${r}, ${g}, ${b}`;
-        colorResult.style.backgroundColor = hex;
-        let brightness = (r*0.299 + g*0.587 + b*0.114);
-        colorResult.style.color = brightness > 140 ? '#000' : '#fff';
-    }
-    colorPicker.addEventListener('input', updateColor);
-    updateColor();
-
-    // UUID生成器
-    function generateUUID() {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-            const r = Math.random() * 16 | 0;
-            const v = c === 'x' ? r : (r & 0x3 | 0x8);
-            return v.toString(16);
+        document.getElementById('genPwdBtn').addEventListener('click', () => {
+            let len = parseInt(document.getElementById('pwdLength').value);
+            if (isNaN(len)) len = 12;
+            len = Math.min(32, Math.max(6, len));
+            document.getElementById('passwordResult').innerText = generatePassword(len);
         });
-    }
-    document.getElementById('genUuidBtn').addEventListener('click', () => {
-        document.getElementById('uuidResult').innerText = generateUUID();
-    });
 
-    // Base64编解码器（支持中文）
-    function utf8ToBase64(str) {
-        return btoa(unescape(encodeURIComponent(str)));
-    }
-    function base64ToUtf8(base64) {
-        try {
-            return decodeURIComponent(escape(atob(base64)));
-        } catch(e) {
-            return "❌ 解码失败，请检查Base64字符串是否正确";
+        // 字数统计
+        const textarea = document.getElementById('textInput');
+        const wordStats = document.getElementById('wordStats');
+        function updateStats() {
+            let text = textarea.value;
+            let charCount = text.length;
+            let words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+            let sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+            wordStats.innerText = `字符: ${charCount} | 单词: ${words} | 句子: ${sentences}`;
         }
-    }
-    const base64Input = document.getElementById('base64Input');
-    const base64Output = document.getElementById('base64Output');
-    document.getElementById('encodeBase64Btn').addEventListener('click', () => {
-        let text = base64Input.value;
-        if(text === "") {
-            base64Output.value = "❌ 请输入要编码的文本";
-            return;
-        }
-        try {
-            base64Output.value = utf8ToBase64(text);
-        } catch(e) {
-            base64Output.value = "❌ 编码出错，请检查文本";
-        }
-    });
-    document.getElementById('decodeBase64Btn').addEventListener('click', () => {
-        let b64 = base64Output.value.trim();
-        if(b64 === "") {
-            base64Input.value = "❌ 请输入Base64字符串";
-            return;
-        }
-        let decoded = base64ToUtf8(b64);
-        base64Input.value = decoded;
-    });
+        textarea.addEventListener('input', updateStats);
+        updateStats();
 
-    // 页脚链接占位提醒
-    document.getElementById('privacyLink').addEventListener('click', (e) => {
-        e.preventDefault();
-        alert('请创建 privacy.html 页面并修改链接地址。\n模板：声明所有工具本地运行，使用Cookie用于广告，链接均为第三方网站。');
-    });
-    document.getElementById('aboutLink').addEventListener('click', (e) => {
-        e.preventDefault();
-        alert('关于页面建设中。可创建 about.html 介绍第七工具箱的使命和开发计划。');
-    });
-</script>
+        // 时间戳转换
+        const tsInput = document.getElementById('timestampInput');
+        const datetimeInput = document.getElementById('datetimeInput');
+        const tsResult = document.getElementById('timestampResult');
+        (function setDefaultDateTime() {
+            let now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            datetimeInput.value = now.toISOString().slice(0, 16);
+        })();
+        document.getElementById('tsToDateBtn').addEventListener('click', () => {
+            let ts = parseInt(tsInput.value);
+            if (isNaN(ts)) { tsResult.innerText = '❌ 请输入有效时间戳(秒)'; return; }
+            let date = new Date(ts * 1000);
+            if (isNaN(date.getTime())) { tsResult.innerText = '❌ 无效的时间戳'; return; }
+            tsResult.innerText = date.toLocaleString('zh-CN');
+        });
+        document.getElementById('dateToTsBtn').addEventListener('click', () => {
+            let dateStr = datetimeInput.value;
+            if (!dateStr) { tsResult.innerText = '❌ 请选择日期时间'; return; }
+            let date = new Date(dateStr);
+            let ts = Math.floor(date.getTime() / 1000);
+            tsResult.innerText = isNaN(ts) ? '❌ 转换失败' : `Unix时间戳: ${ts}`;
+        });
+
+        // 颜色选择器
+        const colorPicker = document.getElementById('colorPicker');
+        const colorResult = document.getElementById('colorResult');
+        function updateColor() {
+            let hex = colorPicker.value;
+            let r = parseInt(hex.slice(1, 3), 16);
+            let g = parseInt(hex.slice(3, 5), 16);
+            let b = parseInt(hex.slice(5, 7), 16);
+            colorResult.innerText = `HEX: ${hex}  |  RGB: ${r}, ${g}, ${b}`;
+            colorResult.style.backgroundColor = hex;
+            colorResult.style.color = (r * 0.299 + g * 0.587 + b * 0.114) > 140 ? '#000' : '#fff';
+        }
+        colorPicker.addEventListener('input', updateColor);
+        updateColor();
+
+        // UUID生成器
+        function generateUUID() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+                const r = Math.random() * 16 | 0;
+                const v = c === 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+        document.getElementById('genUuidBtn').addEventListener('click', () => {
+            document.getElementById('uuidResult').innerText = generateUUID();
+        });
+
+        // Base64编解码
+        function utf8ToBase64(str) {
+            return btoa(unescape(encodeURIComponent(str)));
+        }
+        function base64ToUtf8(base64) {
+            try {
+                return decodeURIComponent(escape(atob(base64)));
+            } catch (e) {
+                return "❌ 解码失败，请检查Base64字符串";
+            }
+        }
+        document.getElementById('encodeBase64Btn').addEventListener('click', () => {
+            let text = document.getElementById('base64Input').value;
+            if (!text) { document.getElementById('base64Output').value = "❌ 请输入文本"; return; }
+            try {
+                document.getElementById('base64Output').value = utf8ToBase64(text);
+            } catch (e) {
+                document.getElementById('base64Output').value = "❌ 编码出错";
+            }
+        });
+        document.getElementById('decodeBase64Btn').addEventListener('click', () => {
+            let b64 = document.getElementById('base64Output').value.trim();
+            if (!b64) { document.getElementById('base64Input').value = "❌ 请输入Base64"; return; }
+            document.getElementById('base64Input').value = base64ToUtf8(b64);
+        });
+
+        // 二维码生成器
+        document.getElementById('genQrBtn').addEventListener('click', () => {
+            const text = document.getElementById('qrText').value.trim();
+            const resultDiv = document.getElementById('qrResult');
+            if (!text) {
+                resultDiv.innerHTML = '<span style="color:#e11d48;">❌ 请输入文本或链接</span>';
+                return;
+            }
+            const encoded = encodeURIComponent(text);
+            resultDiv.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encoded}" 
+             alt="QR Code" style="max-width:180px; border-radius:8px;">`;
+        });
+
+        // JSON格式化
+        const jsonInput = document.getElementById('jsonInput');
+        const jsonResult = document.getElementById('jsonResult');
+        document.getElementById('formatJsonBtn').addEventListener('click', () => {
+            try {
+                const obj = JSON.parse(jsonInput.value);
+                jsonResult.innerText = JSON.stringify(obj, null, 2);
+                jsonResult.style.color = '#0f172a';
+            } catch (e) {
+                jsonResult.innerText = '❌ JSON格式错误: ' + e.message;
+                jsonResult.style.color = '#e11d48';
+            }
+        });
+        document.getElementById('minifyJsonBtn').addEventListener('click', () => {
+            try {
+                const obj = JSON.parse(jsonInput.value);
+                jsonResult.innerText = JSON.stringify(obj);
+                jsonResult.style.color = '#0f172a';
+            } catch (e) {
+                jsonResult.innerText = '❌ JSON格式错误: ' + e.message;
+                jsonResult.style.color = '#e11d48';
+            }
+        });
+
+        // URL编解码
+        document.getElementById('encodeUrlBtn').addEventListener('click', () => {
+            const input = document.getElementById('urlInput').value;
+            try {
+                document.getElementById('urlResult').innerText = encodeURIComponent(input);
+            } catch (e) {
+                document.getElementById('urlResult').innerText = '❌ 编码失败';
+            }
+        });
+        document.getElementById('decodeUrlBtn').addEventListener('click', () => {
+            const input = document.getElementById('urlInput').value;
+            try {
+                document.getElementById('urlResult').innerText = decodeURIComponent(input);
+            } catch (e) {
+                document.getElementById('urlResult').innerText = '❌ 解码失败，请检查字符串';
+            }
+        });
+
+        // 页脚占位链接
+        document.getElementById('privacyLink').addEventListener('click', e => {
+            e.preventDefault();
+            alert('隐私政策：本站所有工具本地运行，Cookie仅用于广告展示优化。资源导航为第三方链接，详情请查阅各站政策。');
+        });
+        document.getElementById('aboutLink').addEventListener('click', e => {
+            e.preventDefault();
+            alert('第七工具箱 (Toolbox7) · 致力于提供纯净的在线工具与程序员效率资源，包含IDE教程、移动编程App等，持续更新。');
+        });
+    </script>
 </body>
 </html>
